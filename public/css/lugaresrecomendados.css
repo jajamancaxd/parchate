@@ -1,0 +1,386 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {     
+  background-color: #ff6600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 20px;
+  color: white;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding-right: 150px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.nav-item img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 4px;
+}
+
+.nav-item:hover {
+  opacity: 0.85;
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+
+/* ----------- NUEVO: CONTENEDOR SUPERIOR ----------- */
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
+
+/* ----------- NUEVO: FILTRO LADO IZQUIERDO ----------- */
+.filtro-lado-izquierdo {
+  /* Puedes ajustar aquí */
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.filtro-lado-izquierdo button {
+  background-color: #DEE2E6;
+  color: #000000;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Caja de opciones del filtro */
+.filtro-box {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 5px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  width: 250px;
+}
+
+.filtro-box label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.filtro-box select,
+.filtro-box input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.botones-filtro {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn-buscar,
+.btn-cancelar {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-buscar {
+  background-color: #ff6600;
+  color: white;
+}
+
+.btn-cancelar {
+  background-color: #ccc;
+  color: black;
+}
+
+/* ----------- NUEVO: CENTRO ----------- */
+.tabs-centro {
+  /* Puedes ajustar aquí */
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* ----------- NUEVO: DERECHA ----------- */
+.buscador-derecha {
+  /* Puedes ajustar aquí */
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.buscador-derecha input {
+  padding: 8px 15px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  width: 260px;
+  font-size: 14px;
+}
+
+.buscador-derecha button {
+  padding: 8px 16px;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* TARJETAS */
+.tarjetas {
+  display: grid;
+  place-items: center;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  max-width: 1500px; /* Puedes ajustar esto */
+  margin: 0 auto;
+}
+
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-img {
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 0 1 30%;
+}
+
+.tarjeta-contenido {
+  padding: 10px 0;
+}
+
+.tarjeta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.puntuacion {
+  color: #6F7789;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.ubicacion {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.descripcion {
+  font-size: 14px;
+  color: #444;
+}
+
+.leer-mas {
+  color: #ff6600;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.icono {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.nombre {
+  color: #ff6600;
+}
+
+.iconos {
+  width: 20px;
+  height: 25px;
+  margin-right: 4px;
+}
+
+.centrado {
+  justify-content: center !important;
+}
+
+.sucursal-detalle-vertical {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sucursal-imagen-vertical {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.sucursal-contenido-vertical {
+    width: 100%;
+    text-align: center;
+}
+
+.sucursal-titulo {
+    color: #ff6600;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.sucursal-info {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.sucursal-descripcion {
+    font-size: 16px;
+    color: #444;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.sucursal-sin-imagen {
+    color: #888;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 24px;
+    background-color: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #e65c00;
+}
+/* ----------- NUEVO: MENÚS DESPLEGABLES DE PERFIL Y GUARDADOS ----------- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+  padding: 10px 0;
+}
+
+.dropdown-menu button,
+.dropdown-menu form button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  text-align: left;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu button:hover,
+.dropdown-menu form button:hover {
+  background-color: #ff6600;
+  color: white;
+  border-radius: 0;
+}
+.btn-guardar {
+    display: block;
+    width: 90%;
+    margin: 10px auto 0;
+    padding: 8px 12px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-guardar:hover {
+    background-color: #e65c00;
+}
+
+.form-guardar {
+    text-align: center;
+}

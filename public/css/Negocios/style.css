@@ -1,0 +1,103 @@
+/* CONTENEDOR PRINCIPAL DE NEGOCIOS */
+.negocios-container {
+  padding: 10px 60px 30px 60px; /* Igual que .contenido-eventos para mantener uniformidad */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: calc(100% - 120px);
+}
+
+/* TÍTULO PRINCIPAL */
+.titulo {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* MENSAJES FLASH */
+.flash-success,
+.flash-error {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.flash-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.flash-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* GRID DE TARJETAS DE NEGOCIOS */
+.tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(352.67px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* TARJETA INDIVIDUAL DE NEGOCIO */
+.tarjeta-negocio {
+  width: 352.67px;
+  height: 89.06px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+/* IMAGEN DENTRO DE LA TARJETA */
+.tarjeta-negocio img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+/* CONTENIDO DE TEXTO EN LA TARJETA */
+.tarjeta-negocio-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tarjeta-negocio h4 {
+  font-size: 0.95rem;
+  color: #ff6700;;
+  margin: 0 0 0.25rem;
+  text-align: left;
+}
+
+.tarjeta-negocio p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  text-align: left;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .negocios-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: calc(100% - 60px);
+  }
+}
+
+@media (max-width: 576px) {
+  .negocios-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100% - 40px);
+  }
+}

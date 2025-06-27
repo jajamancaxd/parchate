@@ -1,0 +1,216 @@
+/* ESTILOS GENERALES */
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contenido-eventos {
+  padding: 10px 60px 30px 60px;
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+  width: calc(100% - 120px);
+}
+
+/* ENCABEZADO */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.encabezado h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.ordenar a {
+  display: inline-flex;              /* igual que inline-flex para centrar icono y texto */
+  align-items: center;
+  gap: 8px;                         /* espacio entre icono y texto */
+  padding: 8px 18px;               /* padding más amplio */
+  background-color: #ff6700;        /* mismo naranja que .add-user-btn */
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;                  /* tamaño de fuente igual */
+  border: none;
+  border-radius: 20px;              /* bordes redondeados igual */
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ordenar a:hover {
+  background-color: #e65a00;        /* hover igual que .add-user-btn:hover */
+  transform: translateY(-1px);
+}
+
+.ordenar .flecha {
+  font-size: 18px;                  /* un poco más grande que 16px original */
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+/* GRID DE TARJETAS */
+.grid-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* TARJETA EVENTO */
+.tarjeta-evento {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  min-height: 320px;
+  box-sizing: border-box;
+}
+
+.tarjeta-evento:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* IMAGEN EVENTO */
+.imagen-evento {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* CONTENIDO */
+.contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER TARJETA: TÍTULO Y LIKES ALINEADOS */
+.header-tarjeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.header-tarjeta h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff5e14;
+}
+
+/* LIKES */
+.likes {
+  background-color: #ff5e14;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.likes i {
+  font-size: 13px;
+  color: white;
+}
+
+/* UBICACIÓN */
+.ubicacion {
+  font-size: 14px;
+  color: #000000;
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ubicacion i {
+  color: #ff5e14;
+}
+
+/* ETIQUETAS Y DESCRIPCIÓN */
+.etiqueta {
+  font-size: 14px;
+  color: #ff5e14;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.tipo {
+  font-size: 14px;
+  color: #000000;
+  margin: 0;
+  font-weight: normal;
+}
+
+.descripcion {
+  font-size: 14px;
+  color: #000000;
+  line-height: 1.5;
+  flex-grow: 1;
+  margin: 5px 0 10px 0;
+  font-weight: normal;
+}
+
+/* LINK "Leer más" */
+.contenido a {
+  font-weight: 600;
+  color: #ff5e14;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.contenido a:hover {
+  color: #e55d00;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .contenido-eventos {
+    padding-left: 40px;
+    padding-right: 40px;
+    width: calc(100% - 80px);
+  }
+  .grid-tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .contenido-eventos {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: calc(100% - 60px);
+  }
+  .grid-tarjetas {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contenido-eventos {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100% - 40px);
+  }
+}

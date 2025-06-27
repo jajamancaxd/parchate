@@ -1,0 +1,115 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    margin: 0; padding: 0;
+}
+
+.header {
+    background-color: #FF6600;
+    color: white;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    height: 55px;
+}
+
+.back-arrow {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.profile, .info {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #FF6600;
+}
+
+.edit-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.edit-icon input[type="file"] {
+    display: none;
+}
+
+.edit-icon label {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.actions p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.actions button {
+    display: block;
+    margin: 10px auto;
+    background-color: #E0E0E0;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.actions button:hover {
+    background-color: #ccc;
+}
+
+.info h2 {
+    margin-bottom: 0;
+}
+
+.info p {
+    margin-top: 5px;
+    color: #666;
+}

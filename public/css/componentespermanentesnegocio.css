@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Barra superior naranja */
+.barra-naranja {
+  background-color: #ff6600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  color: white;
+  height: 75px;
+}
+
+.barra-izquierda {
+  padding-left: 24px;
+}
+
+.barra-derecha {
+  margin-right: 60px; /* mueve el icono de perfil hacia el centro */
+}
+
+/* Logo */
+.logo-img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
+
+/* Iconos del menú central */
+.iconos-menu {
+  display: flex;
+  gap: 160px; /* aumenta separación entre íconos */
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.iconos-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.iconos-menu i {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Perfil */
+.menu-perfil {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.menu-perfil i {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Submenú del perfil */
+.submenu-perfil {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.submenu-perfil button {
+  background-color: white;
+  color: #333;
+  padding: 13px 20px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.submenu-perfil button:hover {
+  background-color: #f2f2f2;
+}
