@@ -4,132 +4,155 @@
   <meta charset="UTF-8">
   <title>Inicio de sesión</title>
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: url('{{ asset("img/bulevaro.png") }}') no-repeat center center fixed;
       background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .login-container {
-      width: 420px;
-      background-color: white;
-      margin: 60px auto;
+      width: 100%;
+      max-width: 420px;
+      background-color: rgba(255, 255, 255, 0.97);
       padding: 40px 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       text-align: center;
-      box-sizing: border-box;
-      height: 540px;
-      position: relative;
+      animation: slideUp 0.8s ease forwards;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .login-container img {
-      width: 130px;
-      height: 130px;
-      transform: scale(1.4);
-      margin-bottom: 5px;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
     }
 
-    .alert-error,
-    .alert-success {
+    .alert-success, .alert-error {
       position: absolute;
-      top: 150px;
+      top: 15px;
       left: 50%;
       transform: translateX(-50%);
-      padding: 12px;
+      width: 90%;
+      padding: 10px;
       border-radius: 8px;
       font-size: 14px;
-      text-align: center;
-      width: 90%;
-      z-index: 10;
       animation: fadeOut 4s forwards;
+      text-align: center;
     }
 
-    .alert-error {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
-
-    .alert-success {
-      background-color: #d4edda;
-      color: #155724;
-    }
+    .alert-success { background: #d4edda; color: #155724; }
+    .alert-error { background: #f8d7da; color: #721c24; }
 
     @keyframes fadeOut {
-      0% { opacity: 1; }
-      70% { opacity: 1; }
+      0%, 70% { opacity: 1; }
       100% { opacity: 0; }
     }
 
-    .login-container h1 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 20px;
-      transform: scale(1.3);
+    h1 {
+      font-size: 28px;
+      margin: 20px 0;
+      color: #333;
     }
 
     .form-group {
-      display: flex;
-      align-items: center;
+      text-align: left;
       margin-bottom: 18px;
     }
 
     .form-group label {
-      width: 120px;
-      text-align: left;
+      font-weight: bold;
       color: #f35c0c;
-      font-weight: bold;
-    }
-
-    .form-group input {
-      flex: 1;
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      outline: none;
-      font-size: 14px;
-    }
-
-    .login-container button {
-      width: 220px;
-      padding: 8px;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-      border-radius: 8px;
-      margin: 8px auto;
+      margin-bottom: 4px;
       display: block;
     }
 
+    .form-group input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #f35c0c;
+      box-shadow: 0 0 8px rgba(243, 92, 12, 0.3);
+    }
+
+    .button-wrapper {
+      margin-top: 25px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: 0.3s ease;
+    }
+
     .login-btn {
-      background-color: #f35c0c;
+      background: #f35c0c;
       color: white;
       border: none;
     }
 
     .register-btn {
-      background-color: #ffffff;
+      background: white;
       color: #f35c0c;
       border: 2px solid #f35c0c;
     }
 
-    .login-container .links {
+    .register-btn:hover {
+      background: #f35c0c;
+      color: white;
+    }
+
+    .links {
       margin-top: 10px;
       font-size: 13px;
     }
 
-    .login-container .links a {
+    .links a {
       color: gray;
       text-decoration: none;
     }
 
-    .login-container .links a:hover {
+    .links a:hover {
+      color: #f35c0c;
       text-decoration: underline;
     }
 
-    .button-wrapper {
-      margin-top: 30px;
+    @media (max-width: 480px) {
+      h1 { font-size: 24px; }
+      .login-container { padding: 30px 20px; }
     }
   </style>
 </head>
@@ -138,15 +161,13 @@
   <div class="login-container">
     <img src="{{ asset('img/parchatelogo.png') }}" alt="Logo Parchate">
 
-    @if (session('success'))
-      <div class="alert-success">
-        {{ session('success') }}
-      </div>
+    @if(session('success'))
+      <div class="alert-success">{{ session('success') }}</div>
     @endif
 
-    @if ($errors->any())
+    @if($errors->any())
       <div class="alert-error">
-        @foreach ($errors->all() as $error)
+        @foreach($errors->all() as $error)
           <p style="margin: 0;">{{ $error }}</p>
         @endforeach
       </div>

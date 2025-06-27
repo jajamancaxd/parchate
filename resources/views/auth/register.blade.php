@@ -4,143 +4,172 @@
   <meta charset="UTF-8">
   <title>Registro</title>
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: url('{{ asset("img/bulevaro.png") }}') no-repeat center center fixed;
       background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .login-container {
-      width: 420px;
-      background-color: white;
-      margin: 60px auto;
+      width: 100%;
+      max-width: 430px;
+      background-color: rgba(255, 255, 255, 0.97);
       padding: 40px 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       text-align: center;
-      box-sizing: border-box;
-      height: 560px;
       position: relative;
+      animation: slideUp 0.8s ease forwards;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .login-container img {
-      width: 130px;
-      height: 130px;
-      transform: scale(1.4);
-      margin-bottom: 5px;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
     }
 
     .floating-error {
       position: absolute;
-      top: 160px;
-      left: 25px;
-      width: calc(100% - 50px);
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #f8d7da;
       color: #721c24;
-      padding: 10px 12px;
+      padding: 10px 16px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 14px;
+      width: 90%;
+      animation: fadeOut 4s forwards;
       text-align: center;
-      box-sizing: border-box;
-      z-index: 10;
     }
 
     .floating-error ul {
-      margin: 0;
+      list-style: none;
       padding: 0;
-      list-style-position: inside;
+      margin: 0;
     }
 
-    .login-container h1 {
-      font-size: 32px;
-      font-weight: 800;
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
       margin-bottom: 20px;
-      transform: scale(1.3);
     }
 
     .form-group {
-      display: flex;
-      align-items: center;
+      text-align: left;
       margin-bottom: 18px;
     }
 
     .form-group label {
-      width: 120px;
-      text-align: left;
+      display: block;
+      margin-bottom: 6px;
       color: #f35c0c;
       font-weight: bold;
     }
 
-    .form-group input[type="email"],
-    .form-group input[type="password"] {
-      flex: 1;
-      padding: 8px 12px;
+    .form-group input {
+      width: 100%;
+      padding: 10px 15px;
       border: 1px solid #ccc;
-      border-radius: 20px;
+      border-radius: 25px;
+      font-size: 15px;
       outline: none;
-      font-size: 14px;
+    }
+
+    .form-group input:focus {
+      border-color: #f35c0c;
+      box-shadow: 0 0 8px rgba(243, 92, 12, 0.3);
     }
 
     .form-options {
       text-align: left;
       font-size: 14px;
       color: #f35c0c;
-      margin: 10px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-left: 40px;
+      margin: 20px 0 10px 0;
     }
 
     .form-options label {
+      display: block;
       font-weight: bold;
+      margin-bottom: 6px;
     }
 
     .form-options input[type="radio"] {
-      margin-right: 5px;
+      margin-right: 6px;
     }
 
     .terms {
       font-size: 13px;
-      margin: 15px 0;
+      margin: 20px 0;
       color: #f35c0c;
       font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      flex-wrap: wrap;
+      text-align: center;
     }
 
     .login-container button {
-      width: 220px;
-      padding: 8px;
+      width: 100%;
+      padding: 10px;
       font-weight: bold;
       font-size: 15px;
+      border-radius: 25px;
       cursor: pointer;
-      border-radius: 8px;
-      margin: 8px auto;
-      display: block;
-    }
-
-    .login-btn {
       background-color: #f35c0c;
       color: white;
       border: none;
+      transition: 0.3s;
     }
 
-    .login-container .links {
-      margin-top: 10px;
+    .login-container button:hover {
+      background-color: #e14c00;
+    }
+
+    .links {
+      margin-top: 15px;
       font-size: 13px;
     }
 
-    .login-container .links a {
-      color: gray;
+    .links a {
+      color: #555;
       text-decoration: none;
     }
 
-    .login-container .links a:hover {
+    .links a:hover {
+      color: #f35c0c;
       text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .login-container { padding: 30px 20px; }
+      h1 { font-size: 24px; }
     }
   </style>
 </head>
@@ -196,26 +225,13 @@
         </label>
       </div>
 
-      <button type="submit" class="login-btn">Registrarme</button>
+      <button type="submit">Registrarme</button>
     </form>
 
     <div class="links">
       <a href="{{ route('login') }}">¿Ya tienes una cuenta? Inicia sesión aquí</a>
     </div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const errorBox = document.getElementById('mensaje-error');
-      if (errorBox) {
-        setTimeout(() => {
-          errorBox.style.transition = 'opacity 0.6s ease';
-          errorBox.style.opacity = '0';
-          setTimeout(() => errorBox.remove(), 600);
-        }, 4000);
-      }
-    });
-  </script>
 
 </body>
 </html>

@@ -1,514 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Crear Nuevo Evento</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'poppins', sans-serif;
-      font-size: 14px;
-      background: #f8f8f8;
-      margin: 0;
-      padding: 0;
-    }
-    label,
-    input,
-    select,
-    button,
-    textarea,
-    .multi-select-container {
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-    }
+    <meta charset="UTF-8">
+    <title>Crear nuevo evento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f8f8;
+            padding: 30px;
+            margin: 0;
+        }
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 20px 30px;
-    }
+        h2 {
+            color: #ff6600;
+            text-align: center;
+        }
 
-    header {
-      max-width: 728px;
-      margin: 20px auto 0 auto;
-      background-color: #ff6600;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      position: relative;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 6px 6px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        form {
+            max-width: 680px;
+            margin: auto;
+            background: white;
+            padding: 28px 40px 40px 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px #0001;
+        }
 
-    .back-button {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 24px;
-      color: white;
-      padding: 5px;
-      border-radius: 4px;
-    }
-    .back-button:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+        label {
+            display: block;
+            margin-top: 21px;
+            color: #333;
+            font-weight: 500;
+        }
 
-    .logo {
-      height: 50px;
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 6px;
+        }
 
-    label {
-      font-weight: bold;
-      margin-bottom: 6px;
-      display: inline-block;
-    }
+        textarea {
+            resize: vertical;
+        }
 
-    .section {
-      margin-bottom: 20px;
-    }
+        input[type="file"] {
+            margin-top: 7px;
+        }
 
-    input,
-    textarea,
-    select {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
+        .acciones {
+            margin-top: 32px;
+            display: flex;
+            gap: 18px;
+        }
 
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+        .acciones button, .acciones a {
+            background: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 11px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .image-upload {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 10px 0;
-      justify-content: flex-start;
-      align-items: flex-start;
-      width: 100%;
-    }
+        .acciones a {
+            background: #bbb;
+            color: #222;
+        }
 
-    .image-upload > div {
-      width: 150px;
-      height: 100px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
-      padding: 5px;
-      box-sizing: border-box;
-      flex-shrink: 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+        .productos-group > div {
+            display: flex;
+            gap: 9px;
+            margin-top: 9px;
+        }
 
-    .image-upload > div:hover {
-        background-color: #f9f9f9;
-    }
+        .productos-group input[type="text"], .productos-group input[type="number"] {
+            width: 48%;
+        }
 
-    .image-upload .bi-image {
-      font-size: 48px;
-      color: #999;
-    }
+        .productos-group button {
+            padding: 0 8px;
+            font-size: 18px;
+            background: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
 
-    .image-upload .upload-text {
-        display: none;
-    }
+        select[multiple] {
+            height: 102px;
+        }
 
-    .image-upload .loaded-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 6px;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+        .descripcion-campo {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 2px;
+        }
 
-    .image-upload .fa-times-circle {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        color: red;
-        cursor: pointer;
-        font-size: 18px;
-        background-color: white;
-        border-radius: 50%;
-        z-index: 10;
-        padding: 2px;
-        box-shadow: 0 0 3px rgba(0,0,0,0.3);
-    }
+        #loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
 
-    small {
-      display: block;
-      color: #000;
-      opacity: 0.5;
-      margin-bottom: 8px;
-      font-size: 13px;
-    }
+        .loader {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ff6600;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
 
-    .add-btn,
-    .average-btn {
-      background-color: #ff6600;
-      color: white;
-      border: none;
-      padding: 7px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 10px;
-      font-size: 14px;
-    }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-    .multi-select-container,
-    .single-select-container {
-      position: relative;
-      width: fit-content;
-      margin-top: 5px;
-    }
-
-    .multi-select-header,
-    .single-select-header {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      border-radius: 6px;
-      background: #fff;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 20px;
-      width: fit-content;
-      min-width: 200px;
-      max-width: 300px;
-    }
-
-    .multi-select-options,
-    .single-select-options {
-      display: none;
-      position: absolute;
-      width: fit-content;
-      min-width: 200px;
-      max-width: 300px;
-      border: 1px solid #ccc;
-      border-top: none;
-      background: #fff;
-      z-index: 100;
-      max-height: 150px;
-      overflow-y: auto;
-      border-radius: 0 0 6px 6px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .multi-select-option,
-    .single-select-option {
-      padding: 6px 12px;
-      cursor: pointer;
-      position: relative;
-      padding-left: 25px;
-    }
-
-    .multi-select-option:before,
-    .single-select-option:before {
-      content: "•";
-      position: absolute;
-      left: 10px;
-      color: #ff6600;
-    }
-
-    .multi-select-option.selected,
-    .single-select-option.selected {
-      background-color: #ff6600;
-      color: white;
-    }
-
-    .multi-select-option.selected:before,
-    .single-select-option.selected:before {
-      color: white;
-    }
-
-    .multi-select-option:hover:not(.selected),
-    .single-select-option:hover:not(.selected) {
-      background-color: #f5f5f5;
-    }
-
-    .multi-select-container.open .multi-select-options,
-    .single-select-container.open .single-select-options {
-      display: block;
-    }
-
-    .selected-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 5px;
-    }
-
-    .selected-tag {
-      background: #ff6600;
-      color: white;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-    }
-
-    .selected-tag i {
-      margin-left: 5px;
-      cursor: pointer;
-      font-size: 10px;
-    }
-
-    .single-select-tag {
-      background: #ff6600;
-      color: white;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      display: inline-flex;
-      align-items: center;
-      margin-top: 5px;
-    }
-
-    .single-select-tag i {
-      margin-left: 5px;
-      cursor: pointer;
-      font-size: 10px;
-    }
-
-    .date-input-wrapper {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 4px 10px;
-      margin-bottom: 10px;
-      background-color: #fff;
-    }
-
-    .date-input-wrapper input[type="date"] {
-      border: none;
-      outline: none;
-      flex: 1;
-      padding: 0;
-      margin-bottom: 0;
-      background: transparent;
-      text-align: left;
-      margin-right: 8px;
-
-      -webkit-appearance: none !important;
-      -moz-appearance: none !important;
-      appearance: none !important;
-      background-image: none !important;
-
-      &::-webkit-inner-spin-button,
-      &::-webkit-calendar-picker-indicator {
-          display: none !important;
-          -webkit-appearance: none !important;
-      }
-    }
-
-    .date-input-wrapper .bi-calendar3 {
-      margin-left: auto;
-      color: #555;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .date-group {
-      display: flex;
-      gap: 60px;
-      margin-top: 6px;
-      margin-bottom: 10px;
-      align-items: flex-start;
-    }
-
-    .date-picker {
-      display: flex;
-      flex-direction: column;
-      width: 180px;
-    }
-
-    .service-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .service-row input {
-      flex: 1;
-      font-size: 14px;
-      padding: 8px 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .service-row button {
-      background-color: #ff6600;
-      color: white;
-      border: none;
-      padding: 0 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .service-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-      align-items: flex-start;
-    }
-
-    .submit-buttons {
-      display: flex;
-      gap: 15px;
-      margin-top: 25px;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .submit-buttons button {
-      flex-grow: 0;
-      flex-shrink: 0;
-      width: 140px;
-      padding: 8px 15px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-
-    .submit-buttons .publish {
-      background-color: #ff6600;
-      color: white;
-      border: 1px solid #ff6600;
-    }
-
-    .submit-buttons .cancel {
-      background-color: #fff;
-      color: #ff6600;
-      border: 1px solid #ff6600;
-    }
-
-    .average {
-      color: black;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .average-price {
-      color: orange;
-    }
-
-    /* input[type="file"] {
-      display: none;
-    } */
-  </style>
+        .loader-text {
+            margin-top: 15px;
+            color: #ff6600;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    </style>
 </head>
-
 <body>
-  <header>
-  <a href="{{ route('eventos.index') }}" class="back-button">&larr;</a>
-  Crear Evento
-</header>
-<div class="container">
-  <form action="{{ route('eventos.store') }}" method="POST" enctype="multipart/form-data">
+<h2>Crear nuevo evento</h2>
+
+<form action="{{ route('eventos.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
     @csrf
-    <div class="section">
-      <label>Nombre del Evento</label>
-      <input type="text" name="nombre_evento" required>
-    </div>
-    <div class="section">
-      <label>Descripción del Evento</label>
-      <textarea name="descripcion_evento" required></textarea>
-    </div>
-    <div class="section">
-      <label>Imagen de Portada</label>
-      <input type="file" name="imagen_portada" accept="image/*" required>
-    </div>
-    <div class="section">
-      <label>Imágenes de Muestra</label>
-      <input type="file" name="imagenes_muestra[]" multiple accept="image/*">
-    </div>
-    <div class="section">
-      <label>Etiquetas del Evento</label>
-      <select name="tipos_evento[]" multiple required>
+
+    <label>Nombre del evento:</label>
+    <div class="descripcion-campo">Ingrese el nombre del evento.</div>
+    <input type="text" name="nombre_evento" required>
+
+    <label>Descripción del evento:</label>
+    <div class="descripcion-campo">Describa los detalles, temática y lo que ofrece el evento.</div>
+    <textarea name="descripcion_evento" required></textarea>
+
+    <label>Imagen de portada:</label>
+    <div class="descripcion-campo">Suba la imagen principal del evento (tarjeta principal).</div>
+    <input type="file" name="imagen_portada" accept="image/*" required>
+
+    <label>Imágenes de muestra:</label>
+    <div class="descripcion-campo">Suba imágenes adicionales del evento.</div>
+    <input type="file" name="imagenes_muestra[]" multiple accept="image/*">
+
+    <label>Etiquetas del evento:</label>
+    <div class="descripcion-campo">Seleccione las categorías o tipos de evento.</div>
+    <select name="tipos_evento[]" multiple required>
         @foreach($tipos as $tipo)
-          <option value="{{ $tipo->id_tipo_evento }}">{{ $tipo->tipo_de_evento }}</option>
+            <option value="{{ $tipo->id_tipo_evento }}">{{ $tipo->tipo_de_evento }}</option>
         @endforeach
-      </select>
-    </div>
-    <div class="section">
-      <label>Productos / Servicios</label>
-      <div id="productos-container">
-        <div class="service-row">
-          <input type="text" name="productos[0][nombre]" placeholder="Nombre del producto" required>
-          <input type="number" name="productos[0][precio]" placeholder="Precio" required>
+    </select>
+
+    <label>Productos / Servicios:</label>
+    <div class="descripcion-campo">Agregue productos o servicios ofrecidos durante el evento.</div>
+    <div class="productos-group" id="productos">
+        <div>
+            <input type="text" name="productos[0][nombre]" placeholder="Producto o servicio" required>
+            <input type="number" name="productos[0][precio]" placeholder="Precio" min="0" required>
+            <button type="button" onclick="agregarProducto()">+</button>
         </div>
-      </div>
-      <button type="button" class="add-btn" onclick="agregarProducto()">Agregar otro</button>
     </div>
-    <div class="section date-group">
-      <div class="date-picker">
-        <label>Fecha de Inicio</label>
-        <input type="date" name="fecha_inicio_evento" required>
-      </div>
-      <div class="date-picker">
-        <label>Hora de Inicio</label>
-        <input type="time" name="hora_inicio_evento" required>
-      </div>
+
+    <label>Fecha y hora de inicio:</label>
+    <div class="descripcion-campo">Seleccione cuándo comenzará el evento.</div>
+    <input type="date" name="fecha_inicio_evento" required>
+    <input type="time" name="hora_inicio_evento" required>
+
+    <label>Ubicación del evento:</label>
+    <div class="descripcion-campo">Ingrese la dirección o punto de encuentro del evento.</div>
+    <input type="text" name="ubicacion_dada_evento" required>
+
+    <div class="acciones">
+        <button type="submit">Publicar</button>
+        <a href="{{ route('eventos.index') }}">Cancelar</a>
     </div>
-    <div class="section">
-      <label>Ubicación del Evento</label>
-      <input type="text" name="ubicacion_dada_evento" required>
-    </div>
-    <div class="submit-buttons">
-      <button type="reset" class="cancel">Cancelar</button>
-      <button type="submit" class="publish">Publicar</button>
-    </div>
-  </form>
+</form>
+
+<div id="loader-overlay">
+    <div class="loader"></div>
+    <div class="loader-text">Publicando...</div>
 </div>
+
 <script>
-  let count = 1;
-  function agregarProducto() {
-    const container = document.getElementById('productos-container');
-    const div = document.createElement('div');
-    div.className = 'service-row';
-    div.innerHTML = `
-      <input type="text" name="productos[${count}][nombre]" placeholder="Nombre del producto" required>
-      <input type="number" name="productos[${count}][precio]" placeholder="Precio" required>
-    `;
-    container.appendChild(div);
-    count++;
-  }
+    let index = 1;
+    function agregarProducto() {
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <input type="text" name="productos[${index}][nombre]" placeholder="Producto o servicio" required>
+            <input type="number" name="productos[${index}][precio]" placeholder="Precio" min="0" required>
+            <button type="button" onclick="this.parentNode.remove()">-</button>
+        `;
+        document.getElementById('productos').appendChild(div);
+        index++;
+    }
+
+    document.querySelector('form').addEventListener('submit', function () {
+        document.getElementById('loader-overlay').style.display = 'flex';
+    });
 </script>
 </body>
 </html>
